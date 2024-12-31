@@ -1,0 +1,9 @@
+{
+    "query": "query IntrospectionQuery {
+        __schema {
+            types {
+              name
+            }
+        }
+    }"
+}
