@@ -9,6 +9,7 @@ import pysui.sui.sui_pgql.pgql_query as qn
 libs_dir = os.path.join(os.getcwd(),"src", "deepbook_sdk_hun43r")
 sys.path.insert(0,libs_dir)
 import deepbook_client
+from examples.balance_manager import *
 
 owner = "0x44d3015d3c8252692af5fd3215d9bf2e07e862c8c70b49557b8fa69837820923"
 deepbook_client = deepbook_client.DeepbookClient(env="testnet")
@@ -30,9 +31,11 @@ def initialize_balance_managers():
         }
     }
     for bm in balance_managers:
-        deepbook_client.bm_add(balance_managers[bm]['address'], bm, balance_managers[bm]['tradingCap'])
+
+        balanceManager_add(deepbook_client, balance_managers[bm]['address'], bm, balance_managers[bm]['tradingCap'])
 
 initialize_balance_managers()
+balanceManager_createAndShare(deepbook_client, "test-3")
 
 print(f"Using Balance Managers Dict: {deepbook_client.deepbook_config.balance_managers}")
 
@@ -41,4 +44,4 @@ print(f"Using Balance Managers Dict: {deepbook_client.deepbook_config.balance_ma
 #print("Getting Balance for test-2")
 #deepbook_client.bm_getBalance("test-2", "DEEP")
 
-deepbook_client.bm_deposit("test-1", "SUI", 500000000)
+#deepbook_client.bm_deposit("test-1", "SUI", 500000000)
