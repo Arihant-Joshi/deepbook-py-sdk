@@ -1,2 +1,3 @@
 venv-sui
 sui-creds.ini
+**/__pycache__/**
